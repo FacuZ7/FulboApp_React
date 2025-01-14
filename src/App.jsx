@@ -1,14 +1,20 @@
-import HomeCard from './components/HomeCard/HomeCard.jsx'
-import ballImg from './assets/ball.png'
-import soccerField from './assets/soccer-field.png'
+import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home/Home.jsx';
+import Partido from './pages/Partido/Partido.jsx';
+import PartidoRapido from './pages/PartidoRapido/PartidoRapido.jsx';
+
 import './App.css'
 
 function App() {
   return (
-    <div className='app-containter'>
-      <HomeCard cardTitle="Carga Rapida" mainImg={ballImg}></HomeCard>
-      <HomeCard cardTitle="Carga Partido" mainImg={soccerField}></HomeCard>
-    </div>
+    <Router>
+            <Routes>
+              <Route path="/" element={<Home/>}/>
+              <Route path="/partido" element={<Partido/>}/>
+              <Route path="/partidorapido" element={<PartidoRapido/>}/>
+            </Routes>
+    </Router>
+    
   )
 }
 
