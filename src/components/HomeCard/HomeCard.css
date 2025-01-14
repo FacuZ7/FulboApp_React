@@ -1,0 +1,37 @@
+/* Estilo del contenedor principal de la carta */
+.card {
+    width: 250px; /* Ajustar al tamaño deseado */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center;
+    overflow: hidden; /* Evita desbordamiento */
+  }
+  
+  /* Contenedor de la imagen */
+  .card-img-container {
+    height: 200px; /* Altura fija del contenedor */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Recorta el exceso de imagen */
+    background-color: #f9f9f9; /* Fondo opcional */
+    margin: 10px;
+  }
+  
+  /* Imagen dentro de la carta */
+  .card-img-container img {
+    max-width: 100%; /* Ajustar ancho al contenedor */
+    max-height: 100%; /* Ajustar altura sin deformar */
+    object-fit: contain; /* Contener la imagen sin recortar */
+  }
+  
+  /* Estilo del título */
+  .card-title {
+    padding: 15px 10px;
+    font-size: 1.2rem;
+    color: #333;
+    font-size: 12px;
+  }
+  
