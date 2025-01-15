@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import './HomeCard.css';
 
-const HomeCard = ({imgTitle="main-image", imgPath, cardTitle, }) => {
+const HomeCard = ({imgTitle="main-image", imgPath, cardTitle, onClick}) => {
    
   return (
-      <div className="card">
+      <div className="card" onClick={onClick}>
           <div className='card-img-container'>
               <img title={imgTitle} src={imgPath} alt="card-image"></img>
           </div>
