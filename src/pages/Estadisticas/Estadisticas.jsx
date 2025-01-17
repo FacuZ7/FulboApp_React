@@ -1,7 +1,11 @@
+import JugadorEstadisticasToolbar from '../../components/JugadorEstadisticas/JugadorEstadisticasToolbar.jsx'
+
 const Estadisticas = () => {
    
     return (
-        <h1>Estadisticas!</h1>
+        <>
+            <JugadorEstadisticasToolbar/>
+        </>
     );
 
 };
