@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
-import { getEdadActual } from "../../Utils/DateUtils";
+import DateUtils from "../../Utils/DateUtils.js";
 import { useEffect, useState } from "react";
 import './JugadorEstadisticasToolbar.css'
 import soccerPlayer from '../../assets/soccer-player.png'
+import LoadingModal from "../../Utils/Loading/LoadingModal";
 
-const URL = 'https://localhost:44330/api/Jugador/5';
+const URL = 'https://localhost:44330/api/Jugador/1';
 
 const JugadorEstadisticasToolbar = () => {
     const Goles = 52;
@@ -15,14 +16,27 @@ const JugadorEstadisticasToolbar = () => {
         ,fechaNacimiento: ''
     }
     const [personalData, setPersonalData] = useState(initialPersonalData);
+    const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
-        fetch(URL)
-        .then(res => res.json())
-        .then(data => {setPersonalData(data); console.log(data)})
+        // Función para obtener los datos del jugador
+        const fetchData = async () => {
+            try {
+                const response = await fetch(URL);
+                if (!response.ok) {
+                    throw new Error('Error al obtener los datos');
+                }
+                const data = await response.json();
+                setPersonalData(data);
+            } catch (error) {
+                console.error('Error:', error);
+            } finally {
+                setIsLoading(false);
+            }
+        };
 
-        
-    }, [])
+        fetchData();
+    }, []);
 
     /*
         Datos del jugador llegan por props, la idea mas adelante es guardar datos de login en cookie, quizas ni las necesite recibir
@@ -30,13 +44,14 @@ const JugadorEstadisticasToolbar = () => {
     */
     return(
         <div className="jugToolbar-wrapper">
+            {isLoading && <LoadingModal />}
             <div className="jugToolbar-img">
                 <img alt="Imagen Jugador" src={soccerPlayer}/>
             </div>
             <div className="jugToolbar-jugData">
                 <label><b>Nombre:</b> { personalData.nombre + " " + personalData.apellido }</label>
-                <label><b>Fecha Nacimiento:</b> { personalData.fechaNacimiento }</label>
-                <label><b>Edad:</b> {getEdadActual(personalData.fechaNacimiento)}</label>
+                <label><b>Fecha Nacimiento:</b> { DateUtils.formatDate(new Date(personalData.fechaNacimiento)) }</label>
+                <label><b>Edad:</b> {DateUtils.getEdadActual(personalData.fechaNacimiento)}</label>
             </div>
             <div className="jugToolbar-jugEstadisticas">
                 <label><b>Goles:</b> {Goles}</label>
