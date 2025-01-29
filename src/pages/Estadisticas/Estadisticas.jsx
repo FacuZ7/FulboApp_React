@@ -33,7 +33,7 @@ const Estadisticas = () => {
     }
 
     if (error) {
-        return <ErrorModal message={error.message}/>;
+        return <ErrorModal />;
     }
 
 
