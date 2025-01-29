@@ -1,11 +1,12 @@
-import EstadisticasJugadorToolbar from '../../components/EstadisticasJugador/EstadisticasJugadorToolbar.jsx'
+import JugadorEstadisticasToolbar from '../../components/EstadisticasJugador/EstadisticasJugadorToolbar.jsx'
+import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { getJugadorById } from '../../api/JugadorService.js';
-import { getPartidosJugadosPorJugador } from '../../api/PartidoService.js';
 import LoadingModal from '../../Utils/Loading/LoadingModal.jsx';
 import ErrorModal from '../../Utils/Error/ErrorModal.jsx';
 
 const Estadisticas = () => {
+    const { id } = useParams();
     const [jugador, setJugador] = useState(null);
     const [partidos, setPartidos] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -14,8 +15,8 @@ const Estadisticas = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const jugadorData = await getJugadorById(1);
-                const partidosData = await getPartidosJugadosPorJugador(1);
+                const jugadorData = await jugadorService.getJugadorById(id);
+                const partidosData = await jugadorService.getPartidosByJugadorId(id);
                 setJugador(jugadorData);
                 setPartidos(partidosData);
             } catch (err) {
@@ -26,7 +27,7 @@ const Estadisticas = () => {
         };
 
         fetchData();
-    }, []);
+    }, [id]);
 
     if (loading) {
         return <LoadingModal/>;
@@ -39,22 +40,27 @@ const Estadisticas = () => {
 
     return (
         <div>
-            <EstadisticasJugadorToolbar 
+            <JugadorEstadisticasToolbar 
                 nombre={jugador.nombre}
                 apellido={jugador.apellido}
                 fechaNacimiento={jugador.fechaNacimiento}
             />
-            {/* Crear componente para esto, un UL se ve re feo*/}
-            
-            <ul>
+            {/* <ul>
                 {partidos.map((partido) => (
-                    <li key={partido.partidoID}>
+                    <li key={partido.id}>
                         {partido.fecha} - {partido.resultado}
                     </li>
                 ))}
-            </ul>
+            </ul> */}
         </div>
     );
+
+    return (
+        <>
+            <JugadorEstadisticasToolbar/>
+        </>
+    );
+
 };
 
 export default Estadisticas;

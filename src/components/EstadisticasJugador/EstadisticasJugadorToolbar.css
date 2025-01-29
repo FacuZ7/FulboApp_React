@@ -17,20 +17,22 @@
 
 .jugToolbar-img {
     flex: 0 0 auto;
-    max-width: 140px;
-    max-height: 140px;
+    width: 140px; 
+    height: 140px; 
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
     background-color: white;
     border-radius: 8px;
+    overflow: hidden; /* Asegura que la imagen no se desborde */
 }
 
 .jugToolbar-img img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
+    border-radius: 8px; /* Añade bordes redondeados a la imagen */
 }
 
 .jugToolbar-jugData {
