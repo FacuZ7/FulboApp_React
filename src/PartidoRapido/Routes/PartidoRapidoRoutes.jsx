@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom"
-import { PartidoRapidoPage } from "../Pages/PartidoRapidoPage"
+import { PartidoRapidoPage } from "../pages/PartidoRapidoPage.jsx";
 
 export const PartidoRapidoRoutes = () => {
     return(
         <Routes>
-            <Route path="partidorapido" element={ <PartidoRapidoPage/> }/>
+            <Route path="/" element={ <PartidoRapidoPage/> }/>
         </Routes>
     )
 }

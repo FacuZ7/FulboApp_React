@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom"
-import { EstadisticasPage } from "../Pages/EstadisticasPage"
+import { EstadisticasPage } from "../pages/EstadisticasPage.jsx";
 
 export const EstadisticasRoutes = () => {
     return(
         <Routes>
-            <Route path="estadisticas" element={ <EstadisticasPage/> }/>
+            <Route path="/" element={ <EstadisticasPage/> }/>
         </Routes>
     )
 }

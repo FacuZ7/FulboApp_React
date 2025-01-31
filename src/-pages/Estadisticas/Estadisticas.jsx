@@ -1,4 +1,4 @@
-import EstadisticasJugadorToolbar from '../../components/EstadisticasJugador/EstadisticasJugadorToolbar.jsx'
+import EstadisticasJugadorToolbar from '../../-components/EstadisticasJugador/EstadisticasJugadorToolbar.jsx'
 import { useState, useEffect } from 'react';
 import { getJugadorById } from '../../api/JugadorService.js';
 import { getPartidosJugadosPorJugador } from '../../api/PartidoService.js';
@@ -33,7 +33,7 @@ const Estadisticas = () => {
     }
 
     if (error) {
-        return <ErrorModal />;
+        return <ErrorModal message={error.message}/>;
     }
 
 

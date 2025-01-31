@@ -1,4 +1,4 @@
-import HomeCard from '../../components/HomeCard/HomeCard.jsx'
+import HomeCard from '../../-components/HomeCard/HomeCard.jsx'
 import ballImgPath from '../../assets/ball.png'
 import soccerField from '../../assets/soccer-field.png'
 import stadistics from '../../assets/tendencia.png'
