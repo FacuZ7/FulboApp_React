@@ -2,4 +2,8 @@
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
+body{
+  border-radius: 80px;
+}
+
 

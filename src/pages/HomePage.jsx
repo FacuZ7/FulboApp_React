@@ -1,18 +1,12 @@
-import { Grid, Grid2, Typography } from "@mui/material"
+import { HomeCard } from "../components/HomeCard"
+import { HomeLayout } from "../layout/HomeLayout"
 
 export const HomePage = () => {
     return(
-        <Grid2
-            container
-            spacing={0}
-            direction={"column"}
-            alignItems={"center"}
-            justifyContent={"center"}
-            sx={{minHeight: '100vh', backgroundColor:'primary.main', padding:'4'}}
-        >
-        <Typography>Sigo mañana!!</Typography>
-        
-        </Grid2>
-        
+        <HomeLayout>   
+            <HomeCard title="Partido" redirect="/partido"/> 
+            <HomeCard title="Partido Rapido" redirect="/partidorapido"/> 
+            <HomeCard title="Estadisticas" redirect="/estadisticas"/> 
+        </HomeLayout>   
     )
 }
